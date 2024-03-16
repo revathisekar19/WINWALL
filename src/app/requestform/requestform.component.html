@@ -1,0 +1,184 @@
+<div>
+  <form class="serviceForm" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+    <div>
+      <h2 class="head">Service Request Form</h2>
+    </div>
+    <!-- project Details -->
+    <div>
+      <h2 class="title">Project Details</h2>
+      <table class="form-table">
+        <tr>
+          <td><mat-label>Project Name:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline" >
+              <input matInput type="text" id="projectName" name="projectName" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Architect Name:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="architectName" name="architectName" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Client Name:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="clientName" name="clientName" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Consultant Name:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="consultantName" name="consultantName" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Facade Contractor:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="facadeContractor" name="facadeContractor" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Specimen Details -->
+
+    <div class="spec-detail">
+      <h2 class="title">Specimen Details</h2>
+      <div class="specimen">
+
+        <mat-checkbox (change)="handleCheckboxChange('curtainWall')" [checked]="selectedOption === 'curtainWall'" class="example-margin" ngModel>Curtain Wall</mat-checkbox>
+        <mat-checkbox (change)="handleCheckboxChange('window')" [checked]="selectedOption === 'window'" class="example-margin" ngModel>Window</mat-checkbox>
+        <mat-checkbox (change)="handleCheckboxChange('handrail')" [checked]="selectedOption === 'handrail'" class="example-margin" ngModel>Handrail</mat-checkbox>
+        <mat-checkbox (change)="handleCheckboxChange('skylights')" [checked]="selectedOption === 'skylights'" class="example-margin" ngModel>Skylights</mat-checkbox>
+        <mat-checkbox #othersCheckbox (change)="handleCheckboxChange('others')" [checked]="selectedOption === 'others'" class="example-margin" ngModel>Others</mat-checkbox>
+
+        <input *ngIf="selectedOption === 'others' && othersCheckbox.checked" matInput type="text" id="others" name="specimenType" ngModel>
+
+      </div>
+    </div>
+
+    <!-- Specimen Description -->
+
+    <div>
+      <table class="desc-table">
+        <tr>
+          <td><mat-label>Specimen Description:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline" >
+              <input matInput id="specimenDescription" name="specimenDescription" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Specimen Size:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="specimenSize" name="specimenSize" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Date of Test Requested:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="date" id="dateRequested" name="dateRequested" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Expected Date of Specimen Arrival at Laboratory:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput type="date" id="expectedDate" name="expectedDate" ngModel>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Drawings of Test Specimen Attached:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-select ngModel>
+                <mat-option value="yes" ngModel>Yes</mat-option>
+                <mat-option value="no" ngModel>No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-label>Bill of Materials:</mat-label></td>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-select ngModel>
+                <mat-option value="yes" ngModel>Yes</mat-option>
+                <mat-option value="no" ngModel>No</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Contact Details -->
+
+    <div>
+      <h2 class="title">Contact Details - Facade Contractor</h2>
+
+      <div class="align">
+        <mat-label>Contact Person for Technical:</mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" id="contactPersonTechnical" name="contactPersonTechnical" ngModel>
+        </mat-form-field>
+
+        <div class="row">
+          <div class="column">
+            <mat-label>Mobile:</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="mobile" name="mobile" ngModel>
+            </mat-form-field>
+
+          </div>
+          <div class="column">
+            <mat-label>Email:</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="email" id="email" name="email" ngModel>
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-label>Contact Person for Commercial/Financial:</mat-label>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" id="contactPersonCommercial" name="contactPersonTechnical" ngModel>
+        </mat-form-field>
+
+        <div class="row" >
+          <div class="column">
+            <mat-label>Mobile:</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="text" id="mobile2" name="mobile2" ngModel>
+            </mat-form-field>
+
+          </div>
+          <div class="column">
+            <mat-label>Email:</mat-label>
+            <mat-form-field appearance="outline">
+              <input matInput type="email" id="email2" name="email2" ngModel>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center">
+      <button mat-flat-button color="primary">Submit</button>
+    </div>
+  </form>
+</div>
